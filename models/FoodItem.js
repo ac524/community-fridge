@@ -29,4 +29,4 @@ FoodItem.init(
   }
 );
 
-module.exports = User;
+module.exports = FoodItem;
