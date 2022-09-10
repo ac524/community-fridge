@@ -1,17 +1,44 @@
-<h2>Login</h2>
+<div class="flex flex-row">
+  <div class="basis-1/2 border border-solid border-gray-500 rounded p-5">
+    <h2 class="text-xl font-bold mb-5">Login</h2>
+    <form class="form login-form">
+      <div class="form-group mb-5">
+        <label for="email-login">email:</label>
+        <input class="form-control block w-full px-3 py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              type="text" id="email-login"
+        />
+      </div>
+      <div class="form-group mb-5">
+        <label for="password-login">password:</label>
+        <input class="form-control block w-full px-3 py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="password" id="password-login" />
+      </div>
+      <div class="form-group">
+        <button class="bg-lime-500 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded" type="submit">login</button>
+      </div>
+    </form>
 
-<form class="form login-form">
-  <div class="form-group">
-    <label for="email-login">email:</label>
-    <input class="form-input" type="text" id="email-login" />
+      <a href="/login">Don't have an account yet? Signup</a>
   </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
-  </div>
-</form>
+</div>
 
 <script src="/js/login.js"></script>
