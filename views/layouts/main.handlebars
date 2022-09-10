@@ -6,20 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Registry</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  {{!-- <link rel="stylesheet" href="/css/jass.css"> --}}
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-  <header class="p-2 bg-lime-600 flex">
+  <header class="bg-lime-600 text-white flex">
     <h1>
-      User Registry
+      <a href="/" class="px-4 py-3 block hover:bg-lime-500">
+      <span class="text-lg">{{> svgs/fridgeSolid}}</span>
+      Community Fridge
+      </a>
     </h1>
     <!-- TODO: Add a comment describing the functionality of this helper -->
-    <nav class="ml-auto">
+    <nav class="ml-auto flex">
       {{#if logged_in}}
-        <button class="btn" id="logout">logout</button>
+        <a href="/" class="px-4 py-3 block hover:bg-lime-500">Community {{> svgs/shop}}</a>
+        <a href="/myfridge" class="px-4 py-3 block hover:bg-lime-500">My Fridge <span class="text-lg">{{> svgs/fridgePerson}}</span></a>
+        <button class="px-4 py-3 hover:bg-lime-500" id="logout">logout</button>
       {{else}}
-        <a href="/login">Login</a>
+        <a href="/login" class="px-4 py-3 block hover:bg-lime-500">Login</a>
       {{/if}}
     </nav>
 
