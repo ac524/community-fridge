@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, FoodItem } = require('../models');
 const { withAuth, withNoAuth } = require('../utils/auth');
+const { Op } = require('sequelize');
 
 // Route "/"
 
@@ -9,14 +10,34 @@ const { withAuth, withNoAuth } = require('../utils/auth');
 // TODO: Add a comment describing the functionality of the withAuth middleware
 router.get('/', withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] }
+
+    const where = {
+      user_id: {
+        [Op.ne]: req.session.user_id,
+      },
+    };
+
+    const { search_name } = req.query;
+
+    if(search_name) {
+      where.name = {
+        [Op.like]: `%${search_name}%`
+      };
+    }
+
+    const foodData = await FoodItem.findAll({
+      where,
+      include: {
+        model: User,
+        attributes: ['id', 'username'],
+      },
     });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    const foodItems = foodData.map((foodItem) => foodItem.get({ plain: true }));
 
     res.render('homepage', {
-      users,
+      foodItems,
+      searchName: search_name,
       // TODO: Add a comment describing the functionality of this property
       logged_in: req.session.logged_in,
     });
@@ -34,7 +55,6 @@ router.get('/signup', withNoAuth, (req, res) => {
 });
 
 module.exports = router;
-
 
 // Route "/dashboard"
 

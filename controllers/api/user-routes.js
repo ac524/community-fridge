@@ -10,10 +10,10 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+    req.session.user_id = userData.id;
+    req.session.logged_in = true;
 
+    req.session.save(() => {
       res.status(200).json(userData);
     });
   } catch (err) {
@@ -44,11 +44,10 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // TODO: Add a comment describing the functionality of this method
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+    req.session.user_id = userData.id;
+    req.session.logged_in = true;
 
+    req.session.save(() => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {

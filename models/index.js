@@ -4,11 +4,11 @@ const FoodItem = require('./FoodItem');
 // Create associations
 User.hasMany(FoodItem, {
   onDelete: 'CASCADE',
-  foreignKey: 'id',
+  foreignKey: 'user_id'
 });
 
-FoodItem.belongsTo(FoodItem, {
-  foreignKey: 'id'
+FoodItem.belongsTo(User, {
+  foreignKey: 'user_id'
 });
 
 module.exports = { User, FoodItem };

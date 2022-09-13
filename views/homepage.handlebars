@@ -1,10 +1,35 @@
-{{#each users as |user| }}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>{{user.name}}</h2>
-  </div>
-  <div class="col-md-6">
-    <h3><a href="mailto:{{user.email}}">{{user.email}}</a></h3>
-  </div>
+<div class="border border-solid border-lime-700 rounded p-5 mb-5">
+  <form id="search-food-form" action="/">
+    <div class="grid grid-cols-3 gap-3">
+      <div class="col-span-2">
+        <label for="search-name">Food Item Name:</label>
+        <input
+          type="text"
+          id="search-name"
+          name="search_name"
+          value="{{searchName}}"
+          class="form-control block w-full px-3 py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-lime-600 focus:outline-none">
+      </div>
+      <button class="bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded">Search</button>
+    </div>
+  </form>
 </div>
+
+<div class="grid grid-cols-3 gap-1">
+{{#each foodItems}}
+  <div class="bg-stone-200 px-3 py-2">{{name}}</div>
+  <!-- ... -->
+  <div class="bg-stone-200 px-3 py-2">{{quantity}}</div>
+  <div class="bg-stone-200 px-3 py-2">{{user.username}}</div>
 {{/each}}
+</div>
