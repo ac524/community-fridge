@@ -46,6 +46,23 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+router.get('/myfridge', withAuth, async (req, res) => {
+
+  const userData = await User.findByPk(req.session.user_id, {
+    attributes: ['id','username'],
+    include: FoodItem
+  });
+
+  const user = userData.toJSON();
+
+  console.log(user);
+
+  res.render('myfridge', {
+    user,
+    logged_in: req.session.logged_in,
+  });
+});
+
 router.get('/login', withNoAuth, (req, res) => {
   res.render('login');
 });
