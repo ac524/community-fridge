@@ -6,3 +6,9 @@
 .icon svg * {
     fill: currentColor
 }
+
+@media (max-width: 767px) {
+    .menu.active {
+        display: block
+    }
+}

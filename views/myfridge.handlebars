@@ -1,16 +1,8 @@
 <h2 class="text-xl font-bold mb-5">{{user.username}}'s Fridge</h2>
 
-<div class="grid grid-cols-3 gap-1">
-    <div class="col-span-2">
-        <div class="grid grid-cols-2 gap-1">
-        {{#each user.food_items}}
-        <div class="bg-stone-200 px-3 py-2">{{name}}</div>
-        <!-- ... -->
-        <div class="bg-stone-200 px-3 py-2">{{quantity}}</div>
-        {{/each}}
-        </div>
-    </div>
-  <div class="pl-5">
+<div class="md:grid grid-cols-3 gap-1">
+
+  <div class="md:pl-5 col-start-3">
     <form class="form add-food-form mb-5">
       <div class="form-group mb-5">
         <label for="food-name-add-food">Food name:</label>
@@ -46,6 +38,15 @@
         <button class="bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded" type="submit">Add food</button>
       </div>
     </form>
+  </div>
+  <div class="col-span-2 col-start-1 row-start-1">
+      <div class="grid grid-cols-2 gap-1">
+      {{#each user.food_items}}
+      <div class="bg-stone-200 px-3 py-2">{{name}}</div>
+      <!-- ... -->
+      <div class="bg-stone-200 px-3 py-2">{{quantity}}</div>
+      {{/each}}
+      </div>
   </div>
 </div>
 
